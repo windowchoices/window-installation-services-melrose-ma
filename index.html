@@ -1,415 +1,153 @@
-import React from 'react';
-import { Phone, Mail, MapPin, CheckCircle, Menu, X, Clock, Facebook, Instagram, Youtube } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Choice Inc. – Melrose, MA</title>
+    <style>
+        /* Basic styling for the header */
+        header {
+            background-color: #004e92;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-const App = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+        /* Hero section */
+        .hero {
+            background-color: #6a1b9a;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
 
-  const windowServices = [
-    {
-      title: "Double-Hung Windows",
-      content: "Double-hung windows are one of the most popular window styles in Melrose, MA, and for good reason. These classic windows feature two vertically sliding sashes that allow for versatile ventilation—open just the top for privacy, the bottom for airflow, or both to create a chimney effect that draws cool air in from below and pushes warm air out from above. At Window Choice Inc., we install premium double-hung windows crafted from energy-efficient vinyl or durable wood, designed specifically to handle New England’s harsh climate. Our double-hung windows come with tilt-in sashes for easy cleaning from inside your home—ideal for multi-story Colonial homes common in Melrose neighborhoods like Lebanon Street or Upham Street. With ENERGY STAR® certification, these windows reduce heat loss in winter and prevent heat gain in summer, helping Melrose homeowners cut energy bills by up to 25%. We also offer custom sizing to preserve historic architectural integrity in Victorian homes near Melrose Common while still delivering modern insulation performance. Our professional installation includes precision measuring, full-frame or pocket replacements based on your needs, and meticulous sealing to eliminate drafts. Backed by our 75 years of family-owned craftsmanship and local expertise, every double-hung window we install enhances not just comfort and efficiency but also the timeless curb appeal of your Melrose property.",
-      image: "https://windowchoice.com/wp-content/uploads/2024/10/fmf_5314-2048x1365.jpg"
-    },
-    {
-      title: "Casement Windows",
-      content: "Casement windows are the perfect choice for Melrose homeowners seeking superior ventilation, unobstructed views, and sleek modern aesthetics. These windows are hinged on one side and crank open outward, acting like a sail to funnel fresh air deep into your living spaces—a feature especially appreciated during humid Massachusetts summers. At Window Choice Inc., we install high-performance casement windows with multi-chamber vinyl frames, fusion-welded corners, and Low-E glass that blocks up to 95% of UV rays. Ideal for kitchens, bathrooms, or any room where maximum airflow is desired, our casement windows are engineered to withstand coastal winds and heavy rains common in the North Shore region. They also offer excellent security with multi-point locking systems and reinforced sashes. In Melrose’s historic districts, casement windows can be custom-fitted to match original window openings while providing modern thermal performance. Our expert installers ensure every unit is perfectly aligned, sealed against air infiltration, and integrated seamlessly into your home’s exterior. With minimal maintenance required—no painting, no warping, and easy-to-clean glass—you’ll enjoy both beauty and practicality for decades. Whether you’re renovating a mid-century ranch near Ell Pond or upgrading a stately home on Franklin Street, our casement windows blend elegance with energy efficiency, making them a top choice among discerning Melrose residents.",
-      image: "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-JXegyT.jpeg"
-    },
-    {
-      title: "Picture Windows",
-      content: "Picture windows are the ultimate solution for Melrose homeowners who want to flood their interiors with natural light while showcasing scenic views of gardens, tree-lined streets, or the distant skyline. These expansive, fixed-pane windows have no moving parts, which means they offer the largest possible glass area and the highest energy efficiency of any window type. At Window Choice Inc., we install custom picture windows featuring insulated frames, argon gas fills, and double- or triple-pane glass with advanced Low-E coatings—ideal for maintaining stable indoor temperatures despite New England’s extreme seasonal swings. Perfect for living rooms, dining areas, or stairwells in Melrose Colonials and Victorians, picture windows create a seamless visual connection between indoors and outdoors without compromising on thermal performance. We often pair them with flanking casement or double-hung windows to combine aesthetics with functionality. Our installation process includes precise structural assessment, custom fabrication to match your home’s dimensions, and professional sealing to prevent condensation and air leaks. Because picture windows don’t open, they require zero operational maintenance and provide superior sound insulation—ideal for homes near busy corridors like Main Street. With clean lines and minimalist frames, they enhance modern and traditional architecture alike. Trust our 75-year legacy of craftsmanship to deliver picture-perfect results that elevate your home’s beauty, comfort, and value in Melrose, MA.",
-      image: "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-FGaopG.jpeg"
-    },
-    {
-      title: "Bay & Bow Windows",
-      content: "Bay and bow windows are architectural showpieces that add dimension, charm, and usable interior space to homes across Melrose, MA. Bay windows typically consist of a central picture window flanked by two angled side windows (often casements), projecting outward to create a cozy nook perfect for reading, plants, or breakfast seating. Bow windows feature a gentle curve of four or more windows, offering a panoramic view and a softer silhouette. At Window Choice Inc., we specialize in custom bay and bow installations that complement Melrose’s diverse housing stock—from Victorian homes near the Common to mid-century ranches in Melrose Highlands. Our units are crafted with thermally broken frames, energy-efficient glazing, and reinforced structural support to handle the weight and weather exposure of projecting designs. We use premium materials like vinyl or fiberglass that resist warping, rot, and condensation—critical in Massachusetts’ humid summers and snowy winters. Installation includes precise load-bearing assessment, custom framing, and seamless integration with your siding and interior trim. Many Melrose homeowners choose bay windows for living rooms to create a focal point, while bow windows are favored in dining areas for their graceful curvature. Both styles increase natural light, enhance curb appeal, and can boost property value by up to 10%. Our expert team ensures every bay or bow window is level, plumb, and sealed to prevent drafts or water intrusion. With options for operable side units, built-in seating, and energy-saving glass packages, these windows blend form and function beautifully. Let Window Choice Inc. bring elegance and extra square footage to your Melrose home with a custom bay or bow window installation.",
-      image: "https://windowchoice.com/wp-content/uploads/2024/10/fmf_6QYra94-1-e1729543020114.jpg"
-    },
-    {
-      title: "Vinyl Windows",
-      content: "Vinyl windows are the smart, practical choice for Melrose homeowners who want durability, energy efficiency, and low maintenance without sacrificing style or performance. Made from advanced polyvinyl chloride (PVC), our vinyl windows resist fading, chalking, warping, and corrosion—even after decades of exposure to New England’s intense sun, salt air, snow, and humidity. At Window Choice Inc., we install premium vinyl windows with multi-chambered frames that trap air for superior insulation, fusion-welded corners for structural integrity, and ENERGY STAR®-certified glass packages that reduce heating and cooling costs by up to 30%. Available in double-hung, casement, slider, bay, and custom configurations, vinyl windows can mimic the look of wood with realistic finishes while requiring zero painting or staining. They’re especially popular in Melrose’s Colonial, Cape Cod, and ranch-style homes where long-term value and ease of care are priorities. Our professional installation includes full-frame or pocket replacement based on your home’s condition, meticulous flashing and sealing to prevent air and water infiltration, and precise alignment for smooth operation. Vinyl windows also offer excellent sound dampening—ideal for homes near commuter routes like Route 28 or the commuter rail line. With a lifespan of 20–40 years and minimal upkeep (just occasional cleaning with soap and water), they deliver exceptional ROI. Backed by our 75 years of local expertise, every vinyl window we install in Melrose is custom-measured, expertly fitted, and designed to enhance comfort, curb appeal, and energy savings for generations.",
-      image: "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-JDwNwi.jpeg"
-    },
-    {
-      title: "Wood Windows",
-      content: "Wood windows offer timeless beauty, superior insulation, and natural warmth that perfectly complements Melrose’s historic homes and character-rich neighborhoods. At Window Choice Inc., we install high-quality wood windows crafted from sustainably sourced pine, oak, or mahogany, finished with protective cladding on the exterior to resist New England’s harsh weather while preserving the rich grain and elegance of wood inside. These windows provide excellent thermal performance—wood is a natural insulator that reduces heat transfer better than many modern materials. Ideal for Victorian homes near Melrose Common or Craftsman bungalows on West Foster Street, our wood windows are fully customizable in shape, size, and finish to honor architectural authenticity while incorporating modern energy-efficient glass and hardware. We offer both interior-only wood (for full historic restoration) and clad-wood options (aluminum or vinyl exterior for durability with wood interior aesthetics). Installation includes careful handling to prevent damage, precise fitting to original openings, and professional sealing to prevent air leaks and moisture intrusion. Though wood requires more maintenance than vinyl—periodic refinishing or repainting every 5–10 years—the payoff in aesthetic value and comfort is unmatched. Many Melrose homeowners choose wood for primary living spaces where natural materials enhance interior design. Our expert team ensures every wood window is installed with respect for your home’s heritage and performance needs. With proper care, these windows can last 30+ years and significantly boost resale value. Trust Window Choice Inc.’s 75-year legacy to bring warmth, authenticity, and efficiency to your Melrose home with premium wood windows.",
-      image: "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-of0V42.jpeg"
-    },
-    {
-      title: "Fiberglass Windows",
-      content: "Fiberglass windows represent the pinnacle of performance and durability for Melrose, MA homeowners who demand the best in energy efficiency, strength, and longevity. Made from pultruded fiberglass—a composite material stronger than vinyl and more stable than wood—these windows resist expansion, contraction, warping, and fading even under the most extreme New England conditions. At Window Choice Inc., we install premium fiberglass windows that offer thermal performance rivaling wood, with frame conductivity so low it minimizes condensation and heat loss. Their strength allows for narrower frames and larger glass areas, maximizing natural light in homes across Melrose’s varied neighborhoods. Fiberglass windows are ideal for high-exposure locations—south-facing walls, coastal-adjacent properties, or homes near Ell Pond—where UV resistance and dimensional stability are critical. They can be painted to match any interior or exterior color and maintain that finish for decades without chipping or peeling. Our ENERGY STAR®-certified fiberglass units feature triple-pane glass, argon or krypton gas fills, and warm-edge spacers to deliver unmatched insulation. Installation includes precise structural integration, seamless flashing, and airtight sealing to ensure maximum efficiency. Though slightly higher in initial cost than vinyl, fiberglass windows offer superior long-term value with minimal maintenance and a lifespan exceeding 50 years. They’re especially recommended for Melrose homeowners investing in whole-house upgrades, historic renovations requiring performance and authenticity, or those seeking the highest return on investment. With our 75 years of expert craftsmanship, every fiberglass window we install enhances comfort, beauty, and resilience. Choose Window Choice Inc. for the ultimate in window technology built to thrive in Massachusetts’ demanding climate.",
-      image: "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-i5fRh3.jpeg"
-    },
-    {
-      title: "Custom Windows",
-      content: "Custom windows are the ultimate solution for Melrose homeowners with unique architectural features, non-standard openings, or a vision that off-the-shelf products can’t fulfill. Whether you own a Victorian with arched transoms, a mid-century modern home with geometric shapes, or a renovated barn with oversized panels, Window Choice Inc. specializes in bespoke window designs that blend seamlessly with your home’s character while delivering modern energy efficiency and performance. Our custom process begins with an in-home consultation where our experts assess your space, style, and functional needs. We then create precision-engineered windows in any shape—arches, circles, trapezoids, octagons—or size, using premium materials like vinyl, wood, or fiberglass. All custom units include ENERGY STAR®-certified glazing, thermal breaks, and weather-tight seals to ensure comfort despite New England’s volatile climate. In Melrose’s historic districts, we work closely with homeowners and preservation boards to replicate original details while upgrading performance—preserving heritage without sacrificing efficiency. Custom windows can include specialty glass (tinted, frosted, decorative), integrated grilles, unique hardware finishes, or operable sections within fixed designs. Installation is handled by our master craftsmen who treat every project like a work of art—measuring twice, fabricating to exact tolerances, and fitting with millimeter precision to prevent gaps, drafts, or structural stress. Though custom windows require a longer lead time (typically 4–8 weeks), the result is a one-of-a-kind feature that enhances curb appeal, natural light, and property value. Backed by our 75-year family legacy and North Shore expertise, every custom window we install in Melrose is a testament to craftsmanship, innovation, and personalized service. Let us turn your window vision into reality with a solution as unique as your home.",
-      image: "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-2vKrqK.jpeg"
-    }
-  ];
+        .hero h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
 
-  const galleryImages = [
-    "https://windowchoice.com/wp-content/uploads/2024/10/fmf_5314-2048x1365.jpg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-JXegyT.jpeg",
-    "https://windowchoice.com/wp-content/uploads/2024/10/fmf_6QYra94-1-e1729543020114.jpg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-qpoAAs.jpeg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-FGaopG.jpeg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-JDwNwi.jpeg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-i5fRh3.jpeg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-of0V42.jpeg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-2vKrqK.jpeg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-GUKEQh.jpeg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-OkPwfS-2048x1367.jpeg",
-    "https://windowchoice.com/wp-content/uploads/2024/11/image0-0f2b41db-2b8d-4cb6-b6c1-5752fab25752-scaled-e1730841878855.jpg",
-    "https://windowchoice.com/wp-content/uploads/2024/10/IMG_3885-1536x2048.jpg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-JXegyT.jpeg",
-    "https://windowchoice.com/wp-content/uploads/2024/10/fmf_5314-2048x1365.jpg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-FGaopG.jpeg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-JDwNwi.jpeg",
-    "https://windowchoice.com/wp-content/uploads/2024/10/fmf_6QYra94-1-e1729543020114.jpg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-of0V42.jpeg",
-    "https://windowchoice.com/wp-content/uploads/2025/09/qtq80-i5fRh3.jpeg"
-  ].map((src, i) => ({ id: i + 1, src, alt: `Window installation project in Melrose ${i + 1}` }));
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
 
-  const faqs = [
-    {
-      question: "How long does window installation take in Melrose, MA?",
-      answer: "Most standard window replacement projects in Melrose are completed in 1–2 days. Larger homes or custom installations (like bay or bow windows) may take 2–3 days. Our team works efficiently to minimize disruption while ensuring precision and quality."
-    },
-    {
-      question: "Do you offer free estimates for Melrose homeowners?",
-      answer: "Yes! Window Choice Inc. provides free, no-obligation in-home consultations and estimates for all window and door services in Melrose and the North Shore. We’ll assess your needs, show product samples, and provide a detailed quote."
-    },
-    {
-      question: "Are your windows and doors ENERGY STAR® certified?",
-      answer: "Absolutely. All our windows and insulated doors meet or exceed ENERGY STAR® standards for the North Climate Zone, helping Melrose homeowners reduce energy bills by up to 30% while improving comfort year-round."
-    },
-    {
-      question: "Do you work on historic homes in Melrose?",
-      answer: "Yes. We specialize in custom-fit solutions for Melrose’s historic properties, including Victorians near the Common and Colonials on Lebanon Street. We preserve architectural integrity while upgrading performance with energy-efficient, code-compliant products."
-    },
-    {
-      question: "What warranty do you offer on window installations?",
-      answer: "We provide a comprehensive warranty covering both materials and workmanship. Our labor warranty is backed by 75 years of family-owned excellence, and manufacturer warranties on windows typically range from 20 years to lifetime coverage."
-    },
-    {
-      question: "Do you serve other North Shore communities besides Melrose?",
-      answer: "Yes. We proudly serve Danvers, Peabody, Saugus, Malden, Wakefield, Stoneham, and surrounding North Shore towns. Our local presence ensures fast response times, regional expertise, and compliance with Massachusetts building codes."
-    }
-  ];
+        .hero button {
+            background-color: white;
+            color: #004e92;
+            padding: 10px 20px;
+            border: none;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
 
-  const businessHours = [
-    { day: "Monday", hours: "9 AM–8 PM" },
-    { day: "Tuesday", hours: "9 AM–8 PM" },
-    { day: "Wednesday", hours: "9 AM–8 PM" },
-    { day: "Thursday", hours: "9 AM–8 PM" },
-    { day: "Friday", hours: "9 AM–8 PM" },
-    { day: "Saturday", hours: "Closed" },
-    { day: "Sunday", hours: "Closed" }
-  ];
+        .hero button:hover {
+            background-color: #f1f1f1;
+        }
 
-  const socialLinks = [
-    { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/people/Window-Choices-Inc/61580059748846/" },
-    { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/reel/DPmI7s6iseU/?utm_source=ig_web_copy_link&igsh=MWtoejdrdmhvMW1iYQ==" },
-    { name: "TikTok", icon: Youtube, url: "https://www.tiktok.com/tiktokstudio/content" }
-  ];
+        /* Services section */
+        .services {
+            padding: 20px;
+        }
 
-  const footerLinks = [
-    { name: "Home", url: "https://windowchoice.com/" },
-    { name: "About", url: "https://windowchoice.com/about/" },
-    { name: "Windows", url: "https://windowchoice.com/windows/" },
-    { name: "Doors", url: "https://windowchoice.com/doors/" },
-    { name: "Gallery", url: "https://windowchoice.com/gallery/" },
-    { name: "Areas Served", url: "https://windowchoice.com/areas/" },
-    { name: "Contact", url: "https://windowchoice.com/contact/" },
-    { name: "Window Installation Services in Danvers", url: "https://windowchoice.com/windows-installation-services-in-danvers-ma/" },
-    { name: "Door Installation Services in Malden", url: "https://windowchoice.com/doors-installation-services-in-malden-ma/" },
-    { name: "Window Installation Services in Melrose", url: "https://windowchoice.com/window-installation-services-in-melrose-ma/" },
-    { name: "Windows and Doors in Peabody", url: "https://windowchoice.com/windows-and-doors-in-peabody-ma/" },
-    { name: "Window Installation Services in Saugus", url: "https://windowchoice.com/window-installation-services-in-saugus-ma/" },
-    { name: "Window Installation Services in Stoneham", url: "https://windowchoice.com/best-window-installation-services-in-stoneham-ma/" },
-    { name: "Door Installation Services in Wakefield", url: "https://windowchoice.com/best-door-installation-services-in-wakefield/" }
-  ];
+        .services h2 {
+            text-align: center;
+            font-size: 2em;
+        }
 
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-md sticky top-0 z-50">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-4">
-            <div>
-              <h1 className="text-2xl font-bold text-blue-900">Window Choice Inc.</h1>
-              <p className="text-sm text-gray-600">Serving Melrose & the North Shore</p>
-            </div>
-            <div className="hidden md:flex items-center space-x-6">
-              <span className="flex items-center text-gray-700">
-                <Phone className="w-4 h-4 mr-1" />
-                (781) 233-0900
-              </span>
-              <span className="flex items-center text-gray-700">
-                <MapPin className="w-4 h-4 mr-1" />
-                Saugus, MA
-              </span>
-            </div>
-            <button 
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-          
-          {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className="md:hidden py-4 border-t">
-              <div className="flex items-center text-gray-700 mb-3">
-                <Phone className="w-4 h-4 mr-1" />
-                (781) 233-0900
-              </div>
-              <div className="flex items-center text-gray-700 mb-3">
-                <MapPin className="w-4 h-4 mr-1" />
-                Saugus, MA
-              </div>
-            </div>
-          )}
+        .service {
+            margin-bottom: 20px;
+        }
+
+        .service h3 {
+            font-size: 1.5em;
+            color: #004e92;
+        }
+
+        .service p {
+            color: #555;
+        }
+
+        /* Business hours section */
+        .business-hours {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .business-hours h2 {
+            font-size: 1.8em;
+            color: #004e92;
+        }
+
+        /* Contact section */
+        .contact {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        footer p {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Window Choice Inc.</h1>
+        <p>Serving Melrose & the North Shore</p>
+        <p>(781) 233-0900</p>
+        <p>Saugus, MA</p>
+    </header>
+
+    <section class="hero">
+        <h2>Best Window Installation Services in Melrose, MA</h2>
+        <p>Upgrading your windows in Melrose, MA is one of the smartest ways to improve your home’s comfort, energy efficiency, and curb appeal. At Window Choice Inc., we provide professional window installation, door replacement, and custom solutions designed to withstand New England’s demanding climate.</p>
+        <button id="estimate-btn">Get Free Estimate</button>
+    </section>
+
+    <section class="services">
+        <h2>Our Professional Window Installation Services</h2>
+        <div class="service">
+            <h3>Double-Hung Windows</h3>
+            <p>Double-hung windows are one of the most popular window styles in Melrose, MA...</p>
         </div>
-      </header>
-
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-900 to-purple-900 text-white">
-        <div className="container mx-auto px-4 py-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Best Window Installation Services in Melrose, MA</h1>
-          <p className="text-xl max-w-3xl mb-8">
-            Upgrading your windows in Melrose, MA is one of the smartest ways to improve your home’s comfort, energy efficiency, and curb appeal. 
-            At Window Choice Inc., we provide professional window installation, door replacement, and custom solutions designed to withstand New England’s demanding climate.
-          </p>
-          <a 
-            href="https://windowchoice.com/window-installation-services-in-melrose-ma/" 
-            className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-block"
-          >
-            Get Free Estimate
-          </a>
+        <div class="service">
+            <h3>Casement Windows</h3>
+            <p>Casement windows are the perfect choice for Melrose homeowners seeking superior ventilation...</p>
         </div>
-      </div>
+        <!-- Add more services as needed -->
+    </section>
 
-      {/* Business Hours Banner */}
-      <div className="bg-blue-50 border-b">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-center">
-            <Clock className="w-5 h-5 mr-2 text-blue-800" />
-            <span className="text-blue-800 font-medium">
-              Open Monday–Friday: 9 AM–8 PM | Closed Weekends
-            </span>
-          </div>
-        </div>
-      </div>
+    <section class="business-hours">
+        <h2>Business Hours</h2>
+        <p>Open Monday–Friday: 9 AM–8 PM | Closed Weekends</p>
+    </section>
 
-      {/* Services Section */}
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">Our Professional Window Installation Services</h2>
-        
-        {windowServices.map((service, index) => (
-          <div key={index} className="mb-16">
-            <div className="flex flex-col lg:flex-row gap-8 items-center mb-6">
-              <div className="lg:w-1/3">
-                <img 
-                  src={service.image} 
-                  alt={service.title}
-                  className="rounded-lg shadow-md w-full h-64 object-cover"
-                />
-              </div>
-              <div className="lg:w-2/3">
-                <h3 className="text-2xl font-bold mb-4 text-blue-900">{service.title}</h3>
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  {service.content}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p>Call us at: (781) 233-0900</p>
+        <p>Email: windowchoice1@gmail.com</p>
+        <p>Location: Saugus, MA</p>
+    </section>
 
-      {/* Gallery Section */}
-      <div className="bg-gray-100 py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Work in Melrose & the North Shore</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {galleryImages.map((image) => (
-              <div key={image.id} className="aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <img 
-                  src={image.src} 
-                  alt={image.alt} 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    <footer>
+        <p>&copy; 2025 Window Choice Inc. All rights reserved.</p>
+    </footer>
 
-      {/* FAQ Section */}
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-        <div className="max-w-3xl mx-auto space-y-6">
-          {faqs.map((faq, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">{faq.question}</h3>
-              <p className="text-gray-700">{faq.answer}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+    <script>
+        // JavaScript for handling the 'Get Free Estimate' button
+        document.getElementById('estimate-btn').addEventListener('click', function() {
+            alert("Thank you for requesting a free estimate. We'll be in touch soon!");
+        });
+    </script>
 
-      {/* CTA Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div className="container mx-auto px-4 py-16 text-center">
-          <h2 className="text-3xl font-bold mb-6">Transform Your Melrose Home Today</h2>
-          <p className="text-xl max-w-3xl mx-auto mb-8">
-            Upgrade your Massachusetts home today with beautiful, energy-efficient windows. Contact Window Choice Inc. for your free consultation and estimate.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-lg mb-8">
-            <div className="flex items-center">
-              <Phone className="w-5 h-5 mr-2" />
-              <span>(781) 233-0900</span>
-            </div>
-            <div className="flex items-center">
-              <Mail className="w-5 h-5 mr-2" />
-              <span>windowchoice1@gmail.com</span>
-            </div>
-            <div className="flex items-center">
-              <MapPin className="w-5 h-5 mr-2" />
-              <span>Saugus, MA</span>
-            </div>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {businessHours.map((day, index) => (
-              <div key={index} className="bg-blue-700 px-3 py-1 rounded text-sm">
-                {day.day}: {day.hours}
-              </div>
-            ))}
-          </div>
-          <div className="flex justify-center space-x-6 mb-8">
-            {socialLinks.map((social, index) => (
-              <a 
-                key={index}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-gray-200 transition-colors"
-              >
-                <social.icon className="w-6 h-6" />
-              </a>
-            ))}
-          </div>
-          <a 
-            href="https://windowchoice.com/window-installation-services-in-melrose-ma/" 
-            className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-block"
-          >
-            Get Your Free Estimate Now
-          </a>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white">
-        <div className="container mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">Window Choice Inc.</h3>
-              <p className="text-gray-400 mb-4">Family-owned business with 75 years of experience in home improvement.</p>
-              <div className="space-y-2 text-gray-400 mb-4">
-                <div className="flex items-center">
-                  <MapPin className="w-4 h-4 mr-2" />
-                  <span>Saugus, MA</span>
-                </div>
-                <div className="flex items-center">
-                  <Phone className="w-4 h-4 mr-2" />
-                  <span>(781) 233-0900</span>
-                </div>
-                <div className="flex items-center">
-                  <Mail className="w-4 h-4 mr-2" />
-                  <span>windowchoice1@gmail.com</span>
-                </div>
-              </div>
-              <div className="space-y-2">
-                <h4 className="font-semibold mb-2">Business Hours</h4>
-                {businessHours.map((day, index) => (
-                  <div key={index} className="text-sm text-gray-400">
-                    {day.day}: <span className="text-white">{day.hours}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                {footerLinks.slice(0, 6).map((link, index) => (
-                  <li key={index}>
-                    <a 
-                      href={link.url} 
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Service Areas</h3>
-              <ul className="space-y-2">
-                {footerLinks.slice(6, 10).map((link, index) => (
-                  <li key={index}>
-                    <a 
-                      href={link.url} 
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
-              <div className="flex space-x-4 mb-4">
-                {socialLinks.map((social, index) => (
-                  <a 
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    <social.icon className="w-6 h-6" />
-                  </a>
-                ))}
-              </div>
-              <h3 className="text-lg font-semibold mb-4">More Locations</h3>
-              <ul className="space-y-2">
-                {footerLinks.slice(10).map((link, index) => (
-                  <li key={index}>
-                    <a 
-                      href={link.url} 
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Window Choice Inc. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-};
-
-export default App;
+</body>
+</html>
