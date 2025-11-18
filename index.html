@@ -3,151 +3,905 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Window Choice Inc. – Melrose, MA</title>
+    <title>Best Window Installation Services in Melrose, MA | Window Choice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Basic styling for the header */
-        header {
-            background-color: #004e92;
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a5276;
+            --secondary: #3498db;
+            --accent: #e67e22;
+            --light: #f5f7fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #666;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #fff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
             color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        /* Hero section */
-        .hero {
-            background-color: #6a1b9a;
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .hero h2 {
-            font-size: 2em;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        .hero button {
-            background-color: white;
-            color: #004e92;
-            padding: 10px 20px;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
             border: none;
-            font-size: 1.1em;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
             cursor: pointer;
         }
 
-        .hero button:hover {
-            background-color: #f1f1f1;
-        }
-
-        /* Services section */
-        .services {
-            padding: 20px;
-        }
-
-        .services h2 {
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.8)), url('https://images.unsplash.com/photo-1621370263759-f0e33ff8f67c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: white;
             text-align: center;
-            font-size: 2em;
+            padding: 120px 0;
         }
 
-        .service {
+        .hero h1 {
+            color: white;
+            font-size: 3.2rem;
             margin-bottom: 20px;
         }
 
-        .service h3 {
-            font-size: 1.5em;
-            color: #004e92;
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
 
-        .service p {
-            color: #555;
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        /* Business hours section */
-        .business-hours {
-            background-color: #f4f4f4;
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            background-color: var(--primary);
+            color: white;
             padding: 20px;
-            text-align: center;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
         }
 
-        .business-hours h2 {
-            font-size: 1.8em;
-            color: #004e92;
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: white;
         }
 
-        /* Contact section */
-        .contact {
+        .faq-answer.active {
             padding: 20px;
+            max-height: 500px;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(rgba(52, 152, 219, 0.9), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1600585154340-6fdd4f4c7c2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: white;
             text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta h2 {
+            color: white;
+        }
+
+        .cta h2:after {
+            background-color: white;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
 
         /* Footer */
         footer {
-            background-color: #222;
+            background-color: var(--dark);
             color: white;
-            text-align: center;
-            padding: 15px;
+            padding: 60px 0 20px;
         }
 
-        footer p {
-            font-size: 1.2em;
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--accent);
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hours-table td {
+            padding: 8px 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 100px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-
+    <!-- Header -->
     <header>
-        <h1>Window Choice Inc.</h1>
-        <p>Serving Melrose & the North Shore</p>
-        <p>(781) 233-0900</p>
-        <p>Saugus, MA</p>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Window<span>Choice</span></h1>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <section class="hero">
-        <h2>Best Window Installation Services in Melrose, MA</h2>
-        <p>Upgrading your windows in Melrose, MA is one of the smartest ways to improve your home’s comfort, energy efficiency, and curb appeal. At Window Choice Inc., we provide professional window installation, door replacement, and custom solutions designed to withstand New England’s demanding climate.</p>
-        <button id="estimate-btn">Get Free Estimate</button>
-    </section>
-
-    <section class="services">
-        <h2>Our Professional Window Installation Services</h2>
-        <div class="service">
-            <h3>Double-Hung Windows</h3>
-            <p>Double-hung windows are one of the most popular window styles in Melrose, MA...</p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Premium Window Installation Services in Melrose, MA</h1>
+            <p>Transform your home with our expert window installation services. We offer a wide variety of high-quality windows to enhance your home's beauty, energy efficiency, and value.</p>
+            <a href="#contact" class="btn">Get Free Estimate</a>
         </div>
-        <div class="service">
-            <h3>Casement Windows</h3>
-            <p>Casement windows are the perfect choice for Melrose homeowners seeking superior ventilation...</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Our Window Services</h2>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80" alt="Double-Hung Windows">
+                    </div>
+                    <div class="service-content">
+                        <h3>Double-Hung Windows</h3>
+                        <p>Our double-hung windows offer classic style with modern functionality. Both sashes move vertically, allowing for excellent ventilation control. These windows are perfect for traditional and contemporary homes alike, providing easy cleaning and maintenance with their tilt-in feature.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2058&q=80" alt="Casement Windows">
+                    </div>
+                    <div class="service-content">
+                        <h3>Casement Windows</h3>
+                        <p>Casement windows open outward with a crank mechanism, providing excellent ventilation and unobstructed views. Their tight seal when closed makes them one of the most energy-efficient window options available. Ideal for hard-to-reach places and contemporary home designs.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1618221118493-9cfa1a1ad454?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80" alt="Bay & Bow Windows">
+                    </div>
+                    <div class="service-content">
+                        <h3>Bay & Bow Windows</h3>
+                        <p>Create a dramatic focal point in any room with our custom bay and bow windows. These projecting windows not only add architectural interest but also create additional interior space. Perfect for reading nooks or displaying decorative items while flooding your room with natural light.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2030&q=80" alt="Sliding Windows">
+                    </div>
+                    <div class="service-content">
+                        <h3>Sliding Windows</h3>
+                        <p>Our sliding windows offer a modern, space-saving solution that's perfect for contemporary homes. They glide horizontally on tracks, making them easy to operate and ideal for areas where outward-opening windows aren't practical. Great for wide wall spaces and providing panoramic views.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1618221118493-9cfa1a1ad454?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80" alt="Picture Windows">
+                    </div>
+                    <div class="service-content">
+                        <h3>Picture Windows</h3>
+                        <p>Maximize your views with our fixed picture windows that don't open, providing an uninterrupted panoramic view of the outdoors. These windows are perfect for capturing beautiful scenery and flooding your interior with natural light while offering superior energy efficiency.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2027&q=80" alt="Custom Windows">
+                    </div>
+                    <div class="service-content">
+                        <h3>Custom Windows</h3>
+                        <p>Can't find exactly what you're looking for? Our custom window service allows you to design the perfect windows for your unique needs. From unusual shapes and sizes to specific performance requirements, we'll work with you to create windows that perfectly match your vision.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Add more services as needed -->
     </section>
 
-    <section class="business-hours">
-        <h2>Business Hours</h2>
-        <p>Open Monday–Friday: 9 AM–8 PM | Closed Weekends</p>
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2>Our Window Installation Gallery</h2>
+            <div class="gallery-grid">
+                <!-- Gallery images would go here -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1613544723154-8bafa8c8c6e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Window Installation">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2030&q=80" alt="Modern Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2058&q=80" alt="Bay Window">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80" alt="Double Hung Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1618221118493-9cfa1a1ad454?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80" alt="Bow Window">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2027&q=80" alt="Custom Window">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1613544723154-8bafa8c8c6e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Window Replacement">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2058&q=80" alt="Energy Efficient Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80" alt="Modern Home Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1618221118493-9cfa1a1ad454?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80" alt="Living Room Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2030&q=80" alt="Bedroom Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2027&q=80" alt="Kitchen Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1613544723154-8bafa8c8c6e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bathroom Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2058&q=80" alt="Vinyl Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80" alt="Wood Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1618221118493-9cfa1a1ad454?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80" alt="Fiberglass Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2030&q=80" alt="Aluminum Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2027&q=80" alt="Commercial Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1613544723154-8bafa8c8c6e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Historic Home Windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2058&q=80" alt="Energy Star Windows">
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="contact">
-        <h2>Contact Us</h2>
-        <p>Call us at: (781) 233-0900</p>
-        <p>Email: windowchoice1@gmail.com</p>
-        <p>Location: Saugus, MA</p>
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does window installation typically take?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The duration of window installation depends on several factors including the number of windows, type of windows, and the condition of your existing frames. For a standard single-family home with 10-15 windows, our professional team typically completes the installation within 1-2 days. We work efficiently to minimize disruption to your daily routine while ensuring the highest quality installation.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What types of windows are most energy-efficient?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The most energy-efficient windows typically feature double or triple-pane glass with low-E coatings, argon gas fills, and warm-edge spacers. Casement and awning windows tend to be the most energy-efficient operating styles because they seal tightly when closed. Vinyl and fiberglass frames also offer excellent insulation properties. We can help you select the most energy-efficient options for your specific needs and local climate conditions in Melrose, MA.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer financing options for window replacement?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer flexible financing options to make your window replacement project more affordable. We partner with several reputable lenders to provide competitive rates and terms. Additionally, energy-efficient windows may qualify for local rebates or federal tax credits. Our team can provide detailed information about available financing options and help you determine the best solution for your budget.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is the warranty on your windows and installation?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We stand behind our work with comprehensive warranties. Our window products come with manufacturer warranties that typically range from 10 years to lifetime coverage, depending on the product. Additionally, we provide a separate warranty on our installation workmanship, ensuring that your windows are properly installed and will perform as expected. Specific warranty details will be provided with your quote.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can you install windows in historic homes while maintaining their character?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We specialize in preserving the architectural integrity of historic homes while upgrading to modern, energy-efficient windows. We offer custom window solutions that match the original style, including divided lites, authentic wood grains, and traditional operating styles. Our team has extensive experience working with historic properties in the Melrose area and understands the importance of maintaining historical accuracy while improving performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Ready to Transform Your Home?</h2>
+            <p>Contact us today for a free consultation and estimate. Our team of experts will help you select the perfect windows for your home and provide professional installation services you can trust.</p>
+            <a href="tel:7812330900" class="btn">Call Now: (781) 233-0900</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Window Choice Inc. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Window Choice</h3>
+                    <p>Your trusted partner for premium window installation services in Melrose, MA and surrounding areas. We're committed to enhancing your home's beauty, comfort, and energy efficiency.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/Window-Choices-Inc/61580059748846/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/reel/DPmI7s6iseU/?utm_source=ig_web_copy_link&igsh=MWtoejdrdmhvMW1iYQ==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/tiktokstudio/content" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="https://windowchoice.com/windows-installation-services-in-danvers-ma/">Window Installation Danvers</a></li>
+                        <li><a href="https://windowchoice.com/doors-installation-services-in-malden-ma/">Door Installation Malden</a></li>
+                        <li><a href="https://windowchoice.com/window-installation-services-in-melrose-ma/">Window Installation Melrose</a></li>
+                        <li><a href="https://windowchoice.com/windows-and-doors-in-peabody-ma/">Windows & Doors Peabody</a></li>
+                        <li><a href="https://windowchoice.com/window-installation-services-in-saugus-ma/">Window Installation Saugus</a></li>
+                        <li><a href="https://windowchoice.com/best-window-installation-services-in-stoneham-ma/">Window Installation Stoneham</a></li>
+                        <li><a href="https://windowchoice.com/best-door-installation-services-in-wakefield/">Door Installation Wakefield</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="https://windowchoice.com/about/">About Us</a></li>
+                        <li><a href="https://windowchoice.com/areas/">Service Areas</a></li>
+                        <li><a href="https://windowchoice.com/doors/">Doors</a></li>
+                        <li><a href="https://windowchoice.com/gallery/">Gallery</a></li>
+                        <li><a href="https://windowchoice.com/windows/">Windows</a></li>
+                        <li><a href="https://windowchoice.com/contact/">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>Saugus, MA</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p><a href="tel:7812330900">(781) 233-0900</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p><a href="mailto:windowchoice1@gmail.com">windowchoice1@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin-top: 20px;">Business Hours</h4>
+                    <table class="hours-table">
+                        <tr>
+                            <td>Monday</td>
+                            <td>9 AM–8 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td>
+                            <td>9 AM–8 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td>
+                            <td>9 AM–8 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Thursday</td>
+                            <td>9 AM–8 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Friday</td>
+                            <td>9 AM–8 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Saturday</td>
+                            <td>Closed</td>
+                        </tr>
+                        <tr>
+                            <td>Sunday</td>
+                            <td>Closed</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Window Choice. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // JavaScript for handling the 'Get Free Estimate' button
-        document.getElementById('estimate-btn').addEventListener('click', function() {
-            alert("Thank you for requesting a free estimate. We'll be in touch soon!");
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                // Close all answers
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.classList.remove('active');
+                });
+                
+                // If the clicked question wasn't active, open it
+                if (!isActive) {
+                    answer.classList.add('active');
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    nav.classList.remove('active');
+                }
+            });
         });
     </script>
-
 </body>
 </html>
